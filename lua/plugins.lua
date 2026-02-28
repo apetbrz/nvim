@@ -1,0 +1,64 @@
+local NOT_SSH = os.execute("[ -z ${SSH_TTY} ]") == 0
+
+require("oil").setup({
+	default_file_explorer = true,
+	columns = {
+		"icon",
+		"size",
+	},
+	view_options = {
+		show_hidden = true,
+	},
+	constrain_cursor = "editable",
+	prompt_save_on_select_new_entry = true,
+})
+
+require("sentiment").enable()
+
+require("colorizer").setup()
+
+require("ibl").setup()
+
+require("which-key").setup({
+	preset = "helix",
+})
+
+require("lualine").setup({
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {'branch', 'diff', 'diagnostics'},
+		lualine_c = {'filename'},
+		lualine_x = {'encoding', 'fileformat', 'filetype'},
+		lualine_y = {'location'},
+		lualine_z = {'progress'}
+	},
+})
+
+if NOT_SSH then require("smear_cursor").setup({
+	stiffness = 0.8,
+	trailing_stiffness = 0.4,
+	smear_insert_mode = false,
+	delay_disable = 1000,
+	never_draw_over_target = true,
+	hide_target_hack = true,
+	anticipation = 0,
+	distance_stop_animating = 0.5,
+}) end
+require("smear_cursor").enabled = NOT_SSH
+
+require('hlargs').setup()
+
+require("mini.surround").setup()
+
+local augend = require("dial.augend")
+require("dial.config").augends:register_group{
+	-- default augends used when no group name is specified
+	default = {
+		augend.integer.alias.decimal,   -- nonnegative decimal number (0, 1, 2, 3, ...)
+		augend.integer.alias.hex,       -- nonnegative hex number  (0x01, 0x1a1f, etc.)
+		augend.semver.alias.semver,     -- semantic versioning (0.3.0, 1.22.1, ...)
+		augend.constant.alias.bool,     -- elements in boolean algebra (true and false)
+		augend.constant.alias.Bool,     -- elements in boolean algebra (True and False)
+		augend.date.alias["%Y/%m/%d"],  -- date (2022/02/19, etc.)
+	},
+}
