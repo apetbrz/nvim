@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>ff", function() require('fzf-lua').files() end, { d
 vim.keymap.set("n", "<leader>fr", function() require('fzf-lua').resume() end, { desc = "repeat last fzf" }) --last search
 vim.keymap.set("n", "<leader>fh", function() require('fzf-lua').files({ cwd = '~/' }) end, { desc = "fzf ~/" }) --search home
 vim.keymap.set("n", "<leader>fc", function() require('fzf-lua').files({ cwd = '~/.config' }) end, { desc = "fzf ~/.config" }) --search .config
-vim.keymap.set("n", "<leader>fl", function() require('fzf-lua').files({ cwd = '~/.local/src' }) end, { desc = "fzf ~/.local/src" }) --search .local/src
+vim.keymap.set("n", "<leader>fl", function() require('fzf-lua').files({ cwd = '~/src' }) end, { desc = "fzf ~/src" }) --search src
 vim.keymap.set("n", "<leader>fg", function() require('fzf-lua').grep() end, { desc = "ripgrep" }) --grep
 vim.keymap.set("n", "<leader>fG", function() require('fzf-lua').grep_cword() end, { desc = "ripgrep word under cursor" }) --grep word under cursor
 
