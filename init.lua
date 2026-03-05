@@ -41,11 +41,14 @@ Plug('lukas-reineke/indent-blankline.nvim', { ['as'] = 'ibl' }) -- show indentat
 Plug('nvim-mini/mini.ai') -- around/inside
 Plug('nvim-mini/mini.surround') -- surround with brackets
 Plug('aaronik/treewalker.nvim') -- treesitter movement
+Plug('nvim-treesitter/nvim-treesitter-textobjects') -- treesitter editing
+Plug('Wansmer/treesj') -- argument splitting/joining
 Plug('windwp/nvim-ts-autotag') -- html tag closing
 Plug('numToStr/Comment.nvim') -- comment toggles
 Plug('monaqa/dial.nvim') -- toggles/incr/decr
 
 -- ui
+Plug('nvim-treesitter/nvim-treesitter-context') -- context bar at top
 Plug('folke/which-key.nvim') -- keymap popup
 Plug('romgrk/barbar.nvim') -- tabs
 Plug('nvim-lualine/lualine.nvim') -- statusline

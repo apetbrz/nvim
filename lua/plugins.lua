@@ -13,14 +13,47 @@ require("oil").setup({
 	prompt_save_on_select_new_entry = true,
 })
 
+require('nvim-treesitter').install({
+	'bash',
+	'css',
+	'html',
+	'html_tags',
+	'javascript',
+	'markdown',
+	'markdown_inline',
+	'rust',
+	'typescript',
+	'zig',
+})
+
+require('treesitter-context').setup{
+	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+	multiwindow = true, -- Enable multiwindow support.
+	min_window_height = 3,
+	multiline_threshold = 6,
+	separator = '=',
+}
+
+require('treesj').setup()
+
+require("Comment").setup()
+
 require("sentiment").enable()
 
-require("colorizer").setup()
+require("colorizer").setup(nil, {
+	RGB = true, -- #RGB hex codes
+	RRGGBB = true, -- #RRGGBB hex codes
+	names = false, -- "Name" codes like Blue
+	RRGGBBAA = true, -- #RRGGBBAA hex codes
+	rgb_fn = true, -- CSS rgb() and rgba() functions
+	hsl_fn = true, -- CSS hsl() and hsla() functions
+})
 
 require("ibl").setup()
 
 require("which-key").setup({
 	preset = "helix",
+	delay = 500,
 })
 
 require("lualine").setup({
