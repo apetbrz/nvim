@@ -21,9 +21,27 @@ require('nvim-treesitter').install({
 	'javascript',
 	'markdown',
 	'markdown_inline',
+	'svelte',
 	'rust',
 	'typescript',
 	'zig',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'bash',
+		'css',
+		'html',
+		'html_tags',
+		'javascript',
+		'markdown',
+		'markdown_inline',
+		'svelte',
+		'rust',
+		'typescript',
+		'zig',
+	},
+	callback = function() vim.treesitter.start() end,
 })
 
 require('treesitter-context').setup{
