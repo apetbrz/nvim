@@ -122,6 +122,10 @@ vim.keymap.set('n', '<leader>g', '', { silent = false, desc = "Git" })
 vim.keymap.set('n', '<leader>gd', ':diffthis<cr>', { silent = false, desc = "Check git diff" })
 vim.keymap.set('n', '<leader>gD', ':diffoff<cr>', { silent = false, desc = "Clear git diff" })
 
+-- ui --
+vim.keymap.set("n", "<leader>t", "", { desc = "Text" })
+vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Toggle Wrapping" })
+
 -- -- nvim cfg -- --
 
 -- core
@@ -152,8 +156,9 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildignore:append({ "*.o", "*.so", "*.obj", "*.pyc", "*.class", "*.jar" })
 
 -- text ui
-vim.opt.list = true -- show tab characters
-vim.opt.wrap = false --toggle bound to leader W
+vim.opt.list = true --show tab characters
+vim.opt.wrap = false --toggleable
+vim.opt.linebreak = true --wrap on spaces
 vim.opt.conceallevel = 2 --markdown conceal
 vim.opt.concealcursor = "nc" --^not in insert/visual modes
 vim.opt.scrolloff = 8 --keep lines above/below when scrolling
