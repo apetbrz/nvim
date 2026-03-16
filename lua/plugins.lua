@@ -16,6 +16,7 @@ require("oil").setup({
 require('nvim-treesitter').install({
 	'bash',
 	'css',
+	'elixir',
 	'html',
 	'html_tags',
 	'javascript',
@@ -31,6 +32,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	pattern = {
 		'bash',
 		'css',
+		'elixir',
 		'html',
 		'html_tags',
 		'javascript',
