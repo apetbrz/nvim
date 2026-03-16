@@ -9,9 +9,9 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>c", "", { silent = true, desc = "Nvim config" })
 vim.keymap.set("n", "<leader>cr", ":source $MYVIMRC<cr>", { silent = true, desc = "Reload init.lua" })
 vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
-vim.keymap.set("n", "<leader>p", "", { silent = true, desc = "Vim-plug" })
-vim.keymap.set("n", "<leader>pi", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
-vim.keymap.set("n", "<leader>pc", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
+vim.keymap.set("n", "<leader>P", "", { silent = true, desc = "Vim-plug" })
+vim.keymap.set("n", "<leader>Pi", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
+vim.keymap.set("n", "<leader>Pc", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
 
 -- navigation --
 -- treewalker movements
