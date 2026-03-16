@@ -24,11 +24,11 @@ Plug('lewis6991/gitsigns.nvim') -- git status
 Plug('stevearc/oil.nvim') -- file browser
 Plug('numToStr/FTerm.nvim') -- floating terminal
 Plug('ibhagwan/fzf-lua') -- fuzzy search
+Plug('dense-analysis/ale') -- LSP+linting
 
 -- syntax/rendering
 Plug('MeanderingProgrammer/render-markdown.nvim') -- markdown
 Plug('nvim-treesitter/nvim-treesitter') -- context aware syntax highlighting
-Plug('mfussenegger/nvim-lint') -- linting
 
 -- visual tweaks
 Plug('norcalli/nvim-colorizer.lua') -- colorize hex codes

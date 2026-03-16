@@ -89,7 +89,7 @@ vim.keymap.set("v", "<C-a>", function() require("dial.map").manipulate("incremen
 vim.keymap.set("v", "<C-S-a>", function() require("dial.map").manipulate("decrement","visual") end, { silent = true })
 vim.keymap.set("v", "g<C-a>", function() require("dial.map").manipulate("increment","gvisual") end, { silent = true })
 vim.keymap.set("v", "g<C-S-a>", function() require("dial.map").manipulate("decrement","gvisual") end, { silent = true })
--- tweaks
+-- QoL
 vim.keymap.set("n", "<leader>w", '<C-w>', { silent = true, desc = "Window control leader" })
 vim.keymap.set("n", "<leader>/", ':nohlsearch<cr>', { silent = true, desc = "Clear search highlights" })
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { silent = true, desc = "Delete without yanking" })
@@ -110,6 +110,11 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 -- whole file changes
 vim.keymap.set("n", "<leader>F", "", { desc = "File edit" })
 vim.keymap.set("n", "<leader>Fi", "gg=G''", { desc = "Re-indent entire file" })
+-- LSP
+vim.keymap.set("n", "gh", "<cmd>ALEHover<cr>", { desc = "LSP Hover" })
+vim.keymap.set("n", "gD", "<cmd>ALEGoToDefinition<cr>", { desc = "Go to Definition" })
+vim.keymap.set("n", "gR", "<cmd>ALEFindReference<cr>", { desc = "Go to Reference" })
+vim.keymap.set("n", "<leader>ca", "<cmd>ALECodeAction<cr>", { desc = "Code Action" })
 
 -- external interaction --
 -- oil browser
@@ -141,10 +146,16 @@ vim.opt.ttyfast = true --faster scrolling
 vim.opt.smoothscroll = true --nice
 vim.opt.termguicolors = true --need colors
 vim.opt.lazyredraw = true --dont bother drawing during macros
-vim.opt.diffopt:append("linematch:60")
+vim.opt.diffopt:append("linematch:60") --diff 60 lines
+vim.opt.omnifunc = "ale#completion#OmniFunc" --lsp omnifunc
+vim.g.ale_completion_enabled = true --use lsp completion
+vim.opt.completeopt = menuone,noselect --lsp completion menu settings
+vim.g.ale_lint_on_text_changed = false --run lsp only on save
+vim.g.ale_use_neovim_diagnostics_api = true --more diags
 
 -- framing and highlights
 vim.opt.number = true --numbering lines
+vim.opt.signcolumn = "yes" --icon column
 vim.opt.numberwidth = 4 --line number bar width
 vim.opt.cursorline = true --highlight line
 vim.opt.laststatus = 3 --status line always at bottom with windows open
@@ -190,14 +201,6 @@ vim.diagnostic.config({
 -- -- autocmds -- --
 
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
-
--- lint on write
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = augroup,
-	callback = function()
-		require("lint").try_lint()
-	end,
-})
 
 -- yank highlight
 vim.api.nvim_create_autocmd("TextYankPost",{
