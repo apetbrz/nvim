@@ -110,11 +110,6 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 -- whole file changes
 vim.keymap.set("n", "<leader>F", "", { desc = "File edit" })
 vim.keymap.set("n", "<leader>Fi", "gg=G''", { desc = "Re-indent entire file" })
--- LSP
-vim.keymap.set("n", "gh", "<cmd>ALEHover<cr>", { desc = "LSP Hover" })
-vim.keymap.set("n", "gD", "<cmd>ALEGoToDefinition<cr>", { desc = "Go to Definition" })
-vim.keymap.set("n", "gR", "<cmd>ALEFindReference<cr>", { desc = "Go to Reference" })
-vim.keymap.set("n", "<leader>ca", "<cmd>ALECodeAction<cr>", { desc = "Code Action" })
 
 -- external interaction --
 -- oil browser
@@ -147,11 +142,6 @@ vim.opt.smoothscroll = true --nice
 vim.opt.termguicolors = true --need colors
 vim.opt.lazyredraw = true --dont bother drawing during macros
 vim.opt.diffopt:append("linematch:60") --diff 60 lines
-vim.opt.omnifunc = "ale#completion#OmniFunc" --lsp omnifunc
-vim.g.ale_completion_enabled = true --use lsp completion
-vim.opt.completeopt = menuone,noselect --lsp completion menu settings
-vim.g.ale_lint_on_text_changed = false --run lsp only on save
-vim.g.ale_use_neovim_diagnostics_api = true --more diags
 
 -- framing and highlights
 vim.opt.number = true --numbering lines

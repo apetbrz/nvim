@@ -24,7 +24,7 @@ Plug('lewis6991/gitsigns.nvim') -- git status
 Plug('stevearc/oil.nvim') -- file browser
 Plug('numToStr/FTerm.nvim') -- floating terminal
 Plug('ibhagwan/fzf-lua') -- fuzzy search
-Plug('dense-analysis/ale') -- LSP+linting
+Plug('neovim/nvim-lspconfig') -- LSP
 
 -- syntax/rendering
 Plug('MeanderingProgrammer/render-markdown.nvim') -- markdown
@@ -57,6 +57,7 @@ Plug('goolord/alpha-nvim') --pretty startup
 vim.call('plug#end')
 
 require("config")
+require("lsp")
 require("plugins")
 
 vim.g.gruvbox_baby_comment_style = "NONE"
