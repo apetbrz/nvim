@@ -17,6 +17,8 @@ require('nvim-treesitter').install({
 	'bash',
 	'css',
 	'elixir',
+	'eex',
+	'heex',
 	'html',
 	'html_tags',
 	'javascript',
@@ -33,6 +35,8 @@ vim.api.nvim_create_autocmd('FileType', {
 		'bash',
 		'css',
 		'elixir',
+		'eex',
+		'heex',
 		'html',
 		'html_tags',
 		'javascript',
@@ -97,6 +101,7 @@ if NOT_SSH then require("smear_cursor").setup({
 	anticipation = 0,
 	distance_stop_animating = 0.5,
 }) end
+
 require("smear_cursor").enabled = NOT_SSH
 
 require('hlargs').setup()
