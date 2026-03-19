@@ -6,9 +6,9 @@ vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- nvim helpers
-vim.keymap.set("n", "<leader>c", "", { silent = true, desc = "Nvim config" })
-vim.keymap.set("n", "<leader>cr", ":source $MYVIMRC<cr>", { silent = true, desc = "Reload init.lua" })
-vim.keymap.set("n", "<leader>ce", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
+vim.keymap.set("n", "<leader>C", "", { silent = true, desc = "Nvim config" })
+vim.keymap.set("n", "<leader>Cr", ":source $MYVIMRC<cr>", { silent = true, desc = "Reload init.lua" })
+vim.keymap.set("n", "<leader>Ce", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
 vim.keymap.set("n", "<leader>P", "", { silent = true, desc = "Vim-plug" })
 vim.keymap.set("n", "<leader>Pi", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
 vim.keymap.set("n", "<leader>Pc", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
@@ -23,7 +23,7 @@ vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Treewalker Right<cr>", { silent = tr
 vim.keymap.set("n", "H", ":bprevious<cr>", { silent = true, desc = "Previous buffer" })
 vim.keymap.set("n", "L", ":bnext<cr>", { silent = true, desc = "Next buffer" })
 vim.keymap.set("n", "<leader>q", "<cmd>bdelete<cr>", { silent = true, desc = "Close buffer" })
--- splits
+-- split screen
 vim.keymap.set('n', '<leader>S', '', { silent = true, desc = "Split" })
 vim.keymap.set('n', '<leader>Sv', ':vsplit<cr>:bnext<cr>', { silent = true, desc = "Split onto right" })
 
@@ -61,9 +61,9 @@ vim.keymap.set("n", "<leader>pr", function() tsmv.goto_previous_start("@class.ou
 vim.keymap.set("n", "<leader>ps", function() tsmv.goto_previous_start("@block.inner", "textobjects") end, { desc = "scope" })
 vim.keymap.set("n", "<leader>u", function() require("treesitter-context").go_to_context(vim.v.count1) end, { desc = "Up in context" })
 -- swaps
-vim.keymap.set({ 'n', "v" }, '<leader>s', '', { silent = true, desc = "Swap (Treesitter)" })
-vim.keymap.set({ "n", "v" }, "<leader>sa", function() tsswp.swap_next("@parameter.inner", "textobjects") end, { desc = "next argument" })
-vim.keymap.set({ "n", "v" }, "<leader>sA", function() tsswp.swap_previous("@parameter.inner", "textobjects") end, { desc = "prev argument" })
+vim.keymap.set({ 'n', "v" }, '<leader>a', '', { silent = true, desc = "Swap (Treesitter)" })
+vim.keymap.set({ "n", "v" }, "<leader>aa", function() tsswp.swap_next("@parameter.inner", "textobjects") end, { desc = "next argument" })
+vim.keymap.set({ "n", "v" }, "<leader>aA", function() tsswp.swap_previous("@parameter.inner", "textobjects") end, { desc = "prev argument" })
 vim.keymap.set({ "n", "v" }, "<A-l>", function() tsswp.swap_next("@parameter.inner", "textobjects") end, { desc = "swap next argument" })
 vim.keymap.set({ "n", "v" }, "<A-h>", function() tsswp.swap_previous("@parameter.inner", "textobjects") end, { desc = "swap prev argument" })
 
