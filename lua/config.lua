@@ -120,7 +120,7 @@ vim.keymap.set("t", "<esc>", function() require('FTerm').close() end, { silent =
 -- exec current file
 vim.keymap.set("n", "<leader>cc", "", { silent = true, desc = "Compiler Options" })
 vim.keymap.set("n", "<leader>ccs", function() vim.w.USER_COMPILER = vim.fn.input("Enter the compiler command to store: ") end, { silent = true, desc = "Set Compiler" })
-vim.keymap.set("n", "<leader>ccr", ":exe '!'w:USER_COMPILER expand('%:p')<cr>", { silent = false, desc = "Execute Compiler on Current File" })
+vim.keymap.set("n", "<leader>ccr", ":exe '!'w:USER_COMPILER expand('%:p')<cr>", { silent = false, desc = "Run Compiler on Current File" })
 -- git
 vim.keymap.set('n', '<leader>g', '', { silent = false, desc = "Git" })
 vim.keymap.set('n', '<leader>gd', ':diffthis<cr>', { silent = false, desc = "Check git diff" })
