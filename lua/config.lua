@@ -59,7 +59,7 @@ vim.keymap.set("n", "<leader>pd", function() tsmv.goto_previous_start("@function
 vim.keymap.set("n", "<leader>pc", function() tsmv.goto_previous_start("@call.outer", "textobjects") end, { desc = "function call" })
 vim.keymap.set("n", "<leader>pr", function() tsmv.goto_previous_start("@class.outer", "textobjects") end, { desc = "struct" })
 vim.keymap.set("n", "<leader>ps", function() tsmv.goto_previous_start("@block.inner", "textobjects") end, { desc = "scope" })
-vim.keymap.set("n", "<leader>u", function() require("treesitter-context").go_to_context(vim.v.count1) end, { desc = "Up in context" })
+-- vim.keymap.set("n", "<leader>u", function() require("treesitter-context").go_to_context(vim.v.count1) end, { desc = "Up in context" })
 -- swaps
 vim.keymap.set({ 'n', "v" }, '<leader>a', '', { silent = true, desc = "Swap (Treesitter)" })
 vim.keymap.set({ "n", "v" }, "<leader>aa", function() tsswp.swap_next("@parameter.inner", "textobjects") end, { desc = "next argument" })

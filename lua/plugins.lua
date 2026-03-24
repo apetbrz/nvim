@@ -47,19 +47,36 @@ vim.api.nvim_create_autocmd('FileType', {
 		'typescript',
 		'zig',
 	},
-	callback = function() 
+	callback = function()
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 		vim.treesitter.start()
 	end,
 })
 
-require('treesitter-context').setup{
-	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-	multiwindow = true, -- Enable multiwindow support.
-	min_window_height = 3,
-	multiline_threshold = 6,
-	separator = '=',
-}
+-- require('treesitter-context').setup{
+-- 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+-- 	multiwindow = true, -- Enable multiwindow support.
+-- 	min_window_height = 3,
+-- 	multiline_threshold = 6,
+-- 	separator = '=',
+-- }
+
+require("nvim-navic").setup({
+	lsp = {
+		auto_attach = true,
+	},
+})
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+vim.cmd([[
+	highlight WinBar           guibg=None guifg=#BBBBBB gui=bold
+	highlight WinBarHeader     guibg=None guifg=#BBBBBB gui=bold,underline
+	highlight WinBarNC         guibg=None guifg=#888888 gui=bold
+	highlight WinBarLocation   guibg=None guifg=#888888 gui=bold
+	highlight WinBarModified   guibg=None guifg=#d7d787
+	highlight WinBarGitDirty   guibg=None guifg=#d7afd7
+	highlight WinBarIndicator  guibg=None guifg=#5fafd7 gui=bold
+	highlight WinBarInactive   guibg=None guibg=#3a3a3a guifg=#777777 gui=bold
+]])
 
 require('treesj').setup()
 

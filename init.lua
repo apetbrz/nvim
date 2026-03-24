@@ -48,7 +48,8 @@ Plug('numToStr/Comment.nvim') -- comment toggles
 Plug('monaqa/dial.nvim') -- toggles/incr/decr
 
 -- ui
-Plug('nvim-treesitter/nvim-treesitter-context') -- context bar at top
+-- Plug('nvim-treesitter/nvim-treesitter-context') -- context bar at top
+Plug('SmiteshP/nvim-navic')
 Plug('folke/which-key.nvim') -- keymap popup
 Plug('romgrk/barbar.nvim') -- tabs
 Plug('nvim-lualine/lualine.nvim') -- statusline
