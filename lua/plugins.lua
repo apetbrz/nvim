@@ -1,5 +1,10 @@
 local NOT_SSH = os.execute("[ -z ${SSH_TTY} ]") == 0
 
+require("barbar").setup({
+	animation = false,
+	auto_hide = 1,
+	insert_at_end = true,
+})
 require("oil").setup({
 	default_file_explorer = true,
 	columns = {
