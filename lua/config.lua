@@ -6,12 +6,11 @@ vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- nvim helpers
-vim.keymap.set("n", "<leader>C", "", { silent = true, desc = "Nvim config" })
-vim.keymap.set("n", "<leader>Cr", ":source $MYVIMRC<cr>", { silent = true, desc = "Reload init.lua" })
-vim.keymap.set("n", "<leader>Ce", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
-vim.keymap.set("n", "<leader>P", "", { silent = true, desc = "Vim-plug" })
-vim.keymap.set("n", "<leader>Pi", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
-vim.keymap.set("n", "<leader>Pc", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
+vim.keymap.set("n", "<leader><leader>", "", { silent = true, desc = "Neovim Management" })
+vim.keymap.set("n", "<leader><leader>r", function() end, { silent = true, desc = "Reload init.lua" })
+vim.keymap.set("n", "<leader><leader>e", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
+vim.keymap.set("n", "<leader><leader>i", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
+vim.keymap.set("n", "<leader><leader>c", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
 
 -- navigation --
 -- treewalker movements
@@ -127,8 +126,23 @@ vim.keymap.set('n', '<leader>gd', ':diffthis<cr>', { silent = false, desc = "Che
 vim.keymap.set('n', '<leader>gD', ':diffoff<cr>', { silent = false, desc = "Clear git diff" })
 
 -- ui --
-vim.keymap.set("n", "<leader>t", "", { desc = "Text" })
-vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Toggle Wrapping" })
+vim.keymap.set("n", "<leader>T", "", { desc = "Text" })
+vim.keymap.set("n", "<leader>Tw", ":set wrap!<CR>", { desc = "Toggle Wrapping" })
+
+-- obsidian --
+vim.keymap.set("n", "<leader>o", "", { desc = "Obsidian" })
+vim.keymap.set("n", "<leader>on", ":ObsidianNew<cr>", { desc = "New Note" })
+vim.keymap.set("n", "<leader>ot", ":ObsidianToday<cr>", { desc = "Today's Note" })
+vim.keymap.set("v", "<leader>oe", ":ObsidianExtractNote<cr>", { desc = "Extract selection to a note" })
+vim.keymap.set("n", "<leader>ow", ":ObsidianWorkspaces<cr>", { desc = "Workspaces" })
+
+vim.keymap.set("n", "<leader>tc", function() require("obsidian").util.toggle_checkbox() end, { desc = "Toggle Checkbox" })
+
+-- pomo --
+vim.keymap.set("n", "<leader>t", "", { desc = "Toggle/Pomodoro Timer" })
+vim.keymap.set("n", "<leader>tp", ":TimerSession pomodoro<cr>", { desc = "Start Pomodoro Session (25-5-25-5-25-15)" })
+vim.keymap.set("n", "<leader>tt", ":TimerStart", { desc = "Start Timer" })
+vim.keymap.set("n", "<leader>ts", ":TimerStop<cr>", { desc = "Stop Timer" })
 
 -- -- nvim cfg -- --
 

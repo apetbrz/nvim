@@ -5,6 +5,7 @@ require("barbar").setup({
 	auto_hide = 1,
 	insert_at_end = true,
 })
+
 require("oil").setup({
 	default_file_explorer = true,
 	columns = {
@@ -73,14 +74,14 @@ require("nvim-navic").setup({
 })
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.cmd([[
-	highlight WinBar           guibg=None guifg=#BBBBBB gui=bold
-	highlight WinBarHeader     guibg=None guifg=#BBBBBB gui=bold,underline
-	highlight WinBarNC         guibg=None guifg=#888888 gui=bold
-	highlight WinBarLocation   guibg=None guifg=#888888 gui=bold
-	highlight WinBarModified   guibg=None guifg=#d7d787
-	highlight WinBarGitDirty   guibg=None guifg=#d7afd7
-	highlight WinBarIndicator  guibg=None guifg=#5fafd7 gui=bold
-	highlight WinBarInactive   guibg=None guibg=#3a3a3a guifg=#777777 gui=bold
+highlight WinBar           guibg=None guifg=#BBBBBB gui=bold
+highlight WinBarHeader     guibg=None guifg=#BBBBBB gui=bold,underline
+highlight WinBarNC         guibg=None guifg=#888888 gui=bold
+highlight WinBarLocation   guibg=None guifg=#888888 gui=bold
+highlight WinBarModified   guibg=None guifg=#d7d787
+highlight WinBarGitDirty   guibg=None guifg=#d7afd7
+highlight WinBarIndicator  guibg=None guifg=#5fafd7 gui=bold
+highlight WinBarInactive   guibg=None guibg=#3a3a3a guifg=#777777 gui=bold
 ]])
 
 require('treesj').setup()
@@ -111,8 +112,22 @@ require("lualine").setup({
 		lualine_b = {'branch', 'diff', 'diagnostics'},
 		lualine_c = {'filename'},
 		lualine_x = {'encoding', 'fileformat', 'filetype'},
-		lualine_y = {'location'},
-		lualine_z = {'progress'}
+		lualine_y = {'location', 'progress'},
+		lualine_z = {
+			function() 
+				local ok, pomo = pcall(require, "pomo")
+				if not ok then
+					return ""
+				end
+
+				local timer = pomo.get_first_to_finish()
+				if timer == nil then
+					return ""
+				end
+
+				return "󰄉 " .. tostring(timer)
+			end
+		},
 	},
 })
 
@@ -132,6 +147,36 @@ require("smear_cursor").enabled = NOT_SSH
 require('hlargs').setup()
 
 require("mini.surround").setup()
+
+require("obsidian").setup({
+	workspaces = {
+		{
+			name = "personal",
+			path = "~/vault/personal"
+		}
+	}
+})
+
+require("pomo").setup({
+	timers = {
+		Work = {
+			{ name = "System" },
+		},
+		Break = {
+			{ name = "System" },
+		}
+	},
+	sessions = {
+		pomodoro = {
+			{ name = "Work", duration = "25m" },
+			{ name = "Short Break", duration = "5m" },
+			{ name = "Work", duration = "25m" },
+			{ name = "Short Break", duration = "5m" },
+			{ name = "Work", duration = "25m" },
+			{ name = "Long Break", duration = "15m" },
+		},
+	}
+})
 
 local augend = require("dial.augend")
 require("dial.config").augends:register_group{
