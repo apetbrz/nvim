@@ -11,6 +11,16 @@ vim.keymap.set("n", "<leader><leader>r", function() end, { silent = true, desc =
 vim.keymap.set("n", "<leader><leader>e", ":e $MYVIMRC<cr>", { silent = true, desc = "Edit init.lua" })
 vim.keymap.set("n", "<leader><leader>i", ":PlugInstall<cr>", { silent = true, desc = "Run vim-plug" })
 vim.keymap.set("n", "<leader><leader>c", ":PlugClean<cr>", { silent = true, desc = "Clean vim-plug" })
+function _G.print_table(t) 
+	local count = 0
+	for k,v in pairs(t) do
+		count = count + 1
+		print(k .. ": " .. v)
+	end
+	if count == 0 then
+		print("empty!")
+	end
+end
 
 -- navigation --
 -- treewalker movements
@@ -193,9 +203,32 @@ vim.opt.tabstop = 4 --visual width of tab
 vim.opt.shiftwidth = 0 --use tabstop^ for indent width
 vim.opt.ignorecase = true --ignore case while searching
 vim.opt.smartcase = true --but do not ignore if caps are used
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		-- TODO: WHY WONT IT GET THE COLOR FROM String ??!??!?!?
+		vim.api.nvim_set_hl(0, "FoldedText", { bg = none, fg = vim.api.nvim_get_hl(0, { name = "String", link = false }).fg, italic = false })
+	end,
+})
+function _G.MyFoldtext()
+	local text = vim.api.nvim_buf_get_lines(0,vim.v.foldstart-1,vim.v.foldstart, false)
+	local endcap = vim.api.nvim_buf_get_lines(0,vim.v.foldend-1,vim.v.foldend, false)
+
+	local n_lines = vim.v.foldend - vim.v.foldstart
+	local text_lines = " lines"
+
+	if n_lines == 1 then
+		text_lines = " line"
+	end
+
+	return table.concat(text) .. "  ...  " .. n_lines .. text_lines .. "  ...  " .. endcap[1]
+end
+
 vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99 --disable folding, lower #s enable
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldcolumn = "1"
+vim.opt.foldtext = "v:lua.MyFoldtext()"
 
 -- redundant
 vim.opt.showmode = false --not needed due to lualine
