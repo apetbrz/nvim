@@ -59,14 +59,6 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
--- require('treesitter-context').setup{
--- 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
--- 	multiwindow = true, -- Enable multiwindow support.
--- 	min_window_height = 3,
--- 	multiline_threshold = 6,
--- 	separator = '=',
--- }
-
 require("nvim-navic").setup({
 	lsp = {
 		auto_attach = true,
