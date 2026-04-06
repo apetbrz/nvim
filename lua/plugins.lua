@@ -145,6 +145,10 @@ require("obsidian").setup({
 		{
 			name = "personal",
 			path = "~/vault/personal"
+		},
+		{
+			name = "work",
+			path = "~/vault/work"
 		}
 	}
 })
