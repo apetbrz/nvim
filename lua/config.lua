@@ -185,6 +185,7 @@ vim.opt.wildignore:append({ "*.o", "*.so", "*.obj", "*.pyc", "*.class", "*.jar" 
 
 -- text ui
 vim.opt.list = true --show tab characters
+vim.opt.listchars = { tab = "\\u00b7 ", trail = "-", nbsp = "+" }
 vim.opt.wrap = false --toggleable
 vim.opt.linebreak = true --wrap on spaces
 vim.opt.conceallevel = 2 --markdown conceal
