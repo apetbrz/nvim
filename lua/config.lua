@@ -90,13 +90,13 @@ vim.keymap.set("n", "<leader>fG", function() require('fzf-lua').grep_cword() end
 -- editing --
 -- incr/decr
 vim.keymap.set("n", "<C-a>", function() require("dial.map").manipulate("increment","normal") end, { silent = true })
-vim.keymap.set("n", "<C-S-a>", function() require("dial.map").manipulate("decrement","normal") end, { silent = true })
+vim.keymap.set("n", "<C-s>", function() require("dial.map").manipulate("decrement","normal") end, { silent = true })
 vim.keymap.set("n", "g<C-a>", function() require("dial.map").manipulate("increment","gnormal") end, { silent = true })
-vim.keymap.set("n", "g<C-S-a>", function() require("dial.map").manipulate("decrement","gnormal") end, { silent = true })
+vim.keymap.set("n", "g<C-s>", function() require("dial.map").manipulate("decrement","gnormal") end, { silent = true })
 vim.keymap.set("v", "<C-a>", function() require("dial.map").manipulate("increment","visual") end, { silent = true })
-vim.keymap.set("v", "<C-S-a>", function() require("dial.map").manipulate("decrement","visual") end, { silent = true })
+vim.keymap.set("v", "<C-s>", function() require("dial.map").manipulate("decrement","visual") end, { silent = true })
 vim.keymap.set("v", "g<C-a>", function() require("dial.map").manipulate("increment","gvisual") end, { silent = true })
-vim.keymap.set("v", "g<C-S-a>", function() require("dial.map").manipulate("decrement","gvisual") end, { silent = true })
+vim.keymap.set("v", "g<C-s>", function() require("dial.map").manipulate("decrement","gvisual") end, { silent = true })
 -- QoL
 vim.keymap.set("n", "<leader>w", '<C-w>', { silent = true, desc = "Window control leader" })
 vim.keymap.set("n", "<leader>/", ':nohlsearch<cr>', { silent = true, desc = "Clear search highlights" })
@@ -143,7 +143,7 @@ vim.keymap.set("n", "<leader>o", "", { desc = "Obsidian" })
 vim.keymap.set("n", "<leader>on", ":ObsidianNew<cr>", { desc = "New Note" })
 vim.keymap.set("n", "<leader>ot", ":ObsidianToday<cr>", { desc = "Today's Note" })
 vim.keymap.set("v", "<leader>oe", ":ObsidianExtractNote<cr>", { desc = "Extract selection to a note" })
-vim.keymap.set("n", "<leader>ow", ":ObsidianWorkspaces<cr>", { desc = "Workspaces" })
+vim.keymap.set("n", "<leader>ow", ":ObsidianWorkspace<cr>", { desc = "Workspaces" })
 
 vim.keymap.set("n", "<leader>tc", function() require("obsidian").util.toggle_checkbox() end, { desc = "Toggle Checkbox" })
 
