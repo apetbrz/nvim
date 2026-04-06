@@ -1,8 +1,36 @@
+local cmp = require'cmp'
+
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+		end,
+	},
+	window = {
+	  -- completion = cmp.config.window.bordered(),
+	  -- documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert({
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	}),
+	sources = cmp.config.sources(
+		{
+			{ name = 'nvim_lsp' },
+		}, {
+			{ name = 'buffer' },
+		}
+	)
+})
+
 vim.opt.omnifunc = "v:lua.vim.lsp.omnifunc" --lsp omnifunc
-vim.opt.completeopt = "menuone,noselect,popup" --lsp completion menu settings
+vim.opt.completeopt = "menuone,noselect,popup,preinsert" --lsp completion menu settings
 
 vim.lsp.inlay_hint.enable()
-vim.lsp.completion.enable()
+-- vim.lsp.completion.enable()
 
 vim.diagnostic.config({
 	virtual_text = true,
@@ -10,13 +38,14 @@ vim.diagnostic.config({
 })
 
 vim.lsp.config('*', {
-	capabilities = {
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			}
-		}
-	},
+	capabilities = require('cmp_nvim_lsp').default_capabilities(),
+	-- capabilities = {
+	-- 	textDocument = {
+	-- 		semanticTokens = {
+	-- 			multilineTokenSupport = false,
+	-- 		}
+	-- 	}
+	-- },
 	root_markers = { '.git' },
 })
 
@@ -25,11 +54,12 @@ vim.lsp.config('elixir', {
 	filetypes = { 'elixir' },
 	root_markers = { { '*.ex', '*.exs' }, '.git' },
 })
-vim.lsp.config('js', {
-	cmd = { 'biome', 'lsp-proxy' },
-	filetypes = { 'javascript', 'css', 'svelte' },
-	root_markers = { { 'package-lock.json', 'package.json' }, { '*.js', '*.svelte' }, '.git' },
-})
+-- vim.lsp.config('js', {
+-- 	cmd = { 'biome', 'lsp-proxy' },
+-- 	filetypes = { "astro", "css", "graphql", "html", "javascript", "javascriptreact", "json", "jsonc", "svelte", "typescript", "typescriptreact", "vue" },
+-- 	root_markers = { { 'package-lock.json', 'package.json' }, { '*.js', '*.svelte' }, '.git' },
+-- })
+vim.lsp.config('tailwindcss', {})
 vim.lsp.config('rust', {
 	cmd = { 'rust-analyzer' },
 	filetypes = { 'rust' },
@@ -42,7 +72,7 @@ vim.lsp.config('rust', {
 -- 	root_markers = { { '*.rb' }, '.git' },
 -- })
 
-vim.lsp.enable({'elixir', 'js', 'rust'--[[ , 'ruby' ]]})
+vim.lsp.enable({'elixir', 'tailwindcss', 'biome', 'rust' --[[ , 'ruby' ]]})
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),

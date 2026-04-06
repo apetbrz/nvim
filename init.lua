@@ -25,6 +25,9 @@ Plug('stevearc/oil.nvim') -- file browser
 Plug('numToStr/FTerm.nvim') -- floating terminal
 Plug('ibhagwan/fzf-lua') -- fuzzy search
 Plug('neovim/nvim-lspconfig') -- LSP
+Plug('hrsh7th/cmp-buffer') -- lsp completion
+Plug('hrsh7th/cmp-nvim-lsp') -- lsp completion
+Plug('hrsh7th/nvim-cmp') -- completion
 Plug('nvim-lua/plenary.nvim') -- library for obsidian
 Plug('epwalsh/obsidian.nvim') -- obsidian features
 Plug('epwalsh/pomo.nvim') -- pomodoro timer
