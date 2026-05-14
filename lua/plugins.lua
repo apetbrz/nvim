@@ -188,3 +188,13 @@ require("dial.config").augends:register_group{
 		augend.date.alias["%Y/%m/%d"],  -- date (2022/02/19, etc.)
 	},
 }
+
+require('render-markdown').setup({
+    html = {
+        comment = {
+            text = function(ctx)
+                return ctx.text:match('^<!(.-)%s*%-%->$')
+            end,
+        },
+    },
+})
