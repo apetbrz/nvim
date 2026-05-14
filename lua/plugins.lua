@@ -32,6 +32,7 @@ require('nvim-treesitter').install({
 	'markdown_inline',
 	'svelte',
 	'rust',
+	'toml',
 	'typescript',
 	'zig',
 })
@@ -50,6 +51,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		'markdown_inline',
 		'svelte',
 		'rust',
+		'toml',
 		'typescript',
 		'zig',
 	},
