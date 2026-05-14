@@ -82,14 +82,14 @@ require("Comment").setup()
 
 require("sentiment").enable()
 
-require("colorizer").setup(nil, {
-	RGB = true, -- #RGB hex codes
-	RRGGBB = true, -- #RRGGBB hex codes
-	names = false, -- "Name" codes like Blue
-	RRGGBBAA = true, -- #RRGGBBAA hex codes
-	rgb_fn = true, -- CSS rgb() and rgba() functions
-	hsl_fn = true, -- CSS hsl() and hsla() functions
-})
+-- require("colorizer").setup(nil, {
+-- 	RGB = true, -- #RGB hex codes
+-- 	RRGGBB = true, -- #RRGGBB hex codes
+-- 	names = false, -- "Name" codes like Blue
+-- 	RRGGBBAA = true, -- #RRGGBBAA hex codes
+-- 	rgb_fn = true, -- CSS rgb() and rgba() functions
+-- 	hsl_fn = true, -- CSS hsl() and hsla() functions
+-- })
 
 require("ibl").setup()
 

@@ -37,7 +37,7 @@ Plug('MeanderingProgrammer/render-markdown.nvim') -- markdown
 Plug('nvim-treesitter/nvim-treesitter') -- context aware syntax highlighting
 
 -- visual tweaks
-Plug('norcalli/nvim-colorizer.lua') -- colorize hex codes
+-- Plug('norcalli/nvim-colorizer.lua') -- colorize hex codes
 Plug('sphamba/smear-cursor.nvim') -- pretty cursor
 Plug('utilyre/sentiment.nvim') -- highlight bracket pairs
 Plug('m-demare/hlargs.nvim') -- highlight func args in body
