@@ -140,7 +140,20 @@ require("smear_cursor").enabled = NOT_SSH
 
 require('hlargs').setup()
 
-require("mini.surround").setup()
+require("mini.surround").setup({
+	custom_surroundings = {
+		['w'] = {
+			input = function()
+				local left_edge = MiniSurround.user_input('Wrapper name')
+				return { left_edge .. '%b<>', '^.-%<().*()%>$' }
+			end,
+			output = function()
+				local wrapper = MiniSurround.user_input('Wrapper name')
+				return { left = wrapper .. '<', right = '>' }
+			end
+		},
+	},
+})
 
 require("obsidian").setup({
 	workspaces = {
